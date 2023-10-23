@@ -1,7 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 p,
@@ -15,63 +15,118 @@ h6 {
   margin-block-end: 0.1em;
 }
 
-.header-container{
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    color: #F0F0F0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #302B63;
+.header-container {
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #302b63;
 }
 
-.avatar{
-    width: 50px;
-    border-radius: 50%;
+.avatar {
+  width: 50px;
+  border-radius: 50%;
 }
 
-.header-wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-item2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (max-width: 440px) {
+  .nav-item2 {
+    gap: 0.5rem;
+  }
+}
+
+.nav-item2 button {
+  background-color: transparent;
+  outline: none;
+  border: 0px;
+  cursor: pointer;
+}
+
+.title p {
+  font-size: 24px;
+  user-select: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+@media (max-width: 440px) {
+  .title p {
+    font-size: 20px;
+  }
+}
+
+.avatar-container {
+  cursor: pointer;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.7;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+#slider {
+  overflow: hidden;
+}
+
+.slides {
+  overflow: hidden;
+  animation-name: fade;
+  animation-duration: 4s;
+  display: none;
+}
+
+.img {
+  width: 100%;
+  height: 400px;
+}
+
+#dot {
+  margin: 0 auto;
+  display: none;
+  text-align: center;
+}
+.dot {
+  display: inline-block;
+  border-radius: 50%;
+  background: #d3d3d3;
+  padding: 8px;
+  margin: 10px 5px;
+}
+
+.active {
+  background: black;
+}
+
+@media (max-width: 567px) {
+  #slider {
     width: 100%;
+  }
 }
 
-.nav-item2{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-
-@media (max-width:440px) {
-    .nav-item2{
-        gap: 0.5rem;
-    }
-}
-
-.nav-item2 button{
-    background-color: transparent;
-    outline: none;
-    border: 0px;
-    cursor: pointer;
-}
-
-.title p{
-    font-size: 24px;
-    user-select: none;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-@media (max-width:440px) {
-    .title p{
-        font-size: 20px;
-    }
-}
-
-.avatar-container{
-    cursor: pointer;
+#heading {
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  margin: 10px 0px;
 }
