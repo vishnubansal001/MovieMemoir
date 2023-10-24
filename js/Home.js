@@ -118,3 +118,10 @@ overlay.addEventListener("click", () => {
 popup.addEventListener("click", (event) => {
   event.stopPropagation();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  let loggedInUser = localStorage.getItem('loggedInUser');
+  if (!loggedInUser) {
+      window.location.href = "./signin.html";
+  }
+});

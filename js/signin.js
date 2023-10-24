@@ -12,6 +12,7 @@ function signIn() {
       ema.value = "";
       pass.value = "";
       document.getElementById("login-error").style.display = "none";
+      localStorage.setItem('loggedInUser', email);
       window.location.href = "./home.html";
       // Hide error message
     } else {
@@ -51,14 +52,16 @@ function signUp() {
     };
     localStorage.setItem(email, JSON.stringify(user));
     showSuccessMessage("Sign up successful!");
+    localStorage.setItem('loggedInUser', email);
+    localStorage.setItem('loggedInUserName', username);
     let use = document.getElementById("signup-username");
     let ema = document.getElementById("signup-email");
     let pass = document.getElementById("signup-password");
     use.value = "";
     ema.value = "";
     pass.value = "";
-    window.location.href = "./home.html";
     document.getElementById("signup-error").style.display = "none"; // Hide error message
+    window.location.href = "./home.html";
   }
 }
 
