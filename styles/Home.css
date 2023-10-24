@@ -23,6 +23,9 @@ h6 {
   padding-left: 5%;
   padding-right: 5%;
   padding-top: 1rem;
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
   padding-bottom: 1rem;
   color: #f0f0f0;
   display: flex;
@@ -98,6 +101,7 @@ h6 {
 
 #slider {
   overflow: hidden;
+  padding-top: 4rem;
 }
 
 .slides {
@@ -152,12 +156,12 @@ h6 {
 #slider-container .btn {
   position: absolute;
   top: calc(50% - 20px);
-  background-color:rgba(169, 169, 169, 0.5);
+  background-color: rgba(169, 169, 169, 0.5);
   height: 50px;
   color: white;
   display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
   width: 20px;
   font-size: 20px;
   user-select: none;
@@ -166,7 +170,7 @@ h6 {
 }
 
 /* #slider-container .btn:hover { */
-  /* transform: scale(1.2); */
+/* transform: scale(1.2); */
 /* } */
 
 #slider-container .btn.inactive {
@@ -252,4 +256,27 @@ h6 {
     padding-left: 2.5%;
     padding-right: 2.5%;
   }
+}
+
+.footer {
+  background-color: #24243e;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.footer2{
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.footer2:hover{
+  text-decoration: underline;
 }
