@@ -106,3 +106,15 @@ function slideLeft() {
     buttons[0].classList.remove("inactive");
   }
 }
+
+var overlay = document.querySelector(".overlay");
+var close = document.querySelector(".close");
+var popup = document.querySelector(".popup");
+
+overlay.addEventListener("click", () => {
+  close.click();
+});
+
+popup.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
