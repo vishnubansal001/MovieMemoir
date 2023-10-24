@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body{
+    background-color: #403B75;
+}
+
 p,
 h1,
 h2,
@@ -129,4 +133,82 @@ h6 {
   text-align: center;
   font-size: 2em;
   margin: 10px 0px;
+}
+
+#slider-container {
+  height: 300px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#slider-container .btn {
+  position: absolute;
+  top: calc(50% - 20px);
+  height: 20px;
+  width: 20px;
+  border-left: 4px solid white;
+  border-top: 4px solid white;
+  cursor: pointer;
+}
+
+#slider-container .btn:hover {
+  transform: scale(1.2);
+}
+
+#slider-container .btn.inactive {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+#slider-container .btn:first-of-type {
+  transform: rotate(-45deg);
+  left: 10px;
+}
+
+#slider-container .btn:last-of-type {
+  transform: rotate(135deg);
+  right: 10px;
+}
+
+#slider-container #slider1 {
+  display: flex;
+  gap: 1rem;
+  width: 1000%;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+#slider-container #slider1 .slide {
+  background-color: #000;
+  display: grid;
+  place-items: center;
+}
+
+#slider-container #slider1 .slide span {
+  color: white;
+  font-size: 40px;
+}
+
+@media only screen and (min-width: 1100px) {
+  #slider-container #slider1 .slide {
+    width: calc(2.5% - 20px);
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  #slider-container #slider1 .slide {
+    width: calc(3.3333333% - 20px);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  #slider-container #slider1 .slide {
+    width: calc(5% - 20px);
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  #slider-container #slider1 .slide {
+    width: calc(10% - 20px);
+  }
 }
