@@ -5,7 +5,6 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  font-family: "Jost", sans-serif;
   background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
 }
 .main {
@@ -88,4 +87,29 @@ button:hover {
 }
 #chk:checked ~ .signup label {
   transform: scale(0.6);
+}
+
+.error-message {
+  background-color: #ff6f61;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  display: none;
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  /* left: 0; */
+}
+
+.success-message {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  top: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  position: absolute;
+  display: none;
 }
