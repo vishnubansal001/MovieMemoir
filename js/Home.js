@@ -81,8 +81,8 @@ setParams();
 
 function slideRight() {
   if (currentPosition != 0) {
-    slider.style.marginLeft = currentMargin + 100 / slidesPerPage + "%";
-    currentMargin += 100 / slidesPerPage;
+    slider.style.marginLeft = currentMargin + 300 + "px"; // Change here
+    currentMargin += 300; // Change here
     currentPosition--;
   }
   if (currentPosition === 0) {
@@ -95,8 +95,8 @@ function slideRight() {
 
 function slideLeft() {
   if (currentPosition != slidesCount) {
-    slider.style.marginLeft = currentMargin - 100 / slidesPerPage + "%";
-    currentMargin -= 100 / slidesPerPage;
+    slider.style.marginLeft = currentMargin - 300 + "px"; // Change here
+    currentMargin -= 300; // Change here
     currentPosition++;
   }
   if (currentPosition == slidesCount) {
@@ -119,9 +119,43 @@ popup.addEventListener("click", (event) => {
   event.stopPropagation();
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-  let loggedInUser = localStorage.getItem('loggedInUser');
+document.addEventListener("DOMContentLoaded", function () {
+  let loggedInUser = localStorage.getItem("loggedInUser");
   if (!loggedInUser) {
-      window.location.href = "./signin.html";
+    window.location.href = "./signin.html";
   }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const apiKey = "020b12e5bb22832016d443f1a8f63af0";
+  const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
+  const slider1 = document.querySelector(".slider1");
+
+  function createMovieCard(movie) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <div>
+      <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}" width="400px" height="400px" />
+      <h3>${movie.title}</h3>
+      <p>${movie.release_date}</p>
+      </div>
+    `;
+    return card;
+  }
+
+  function fetchMovies() {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        const movies = data.results;
+        movies.forEach((movie) => {
+          const card = createMovieCard(movie);
+          slider1.appendChild(card);
+        });
+      })
+      .catch((error) => console.error("Error:", error));
+  }
+
+  fetchMovies();
 });
