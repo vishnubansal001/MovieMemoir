@@ -172,7 +172,65 @@ h6 {
   font-weight: 600;
   cursor: pointer;
 }
+.btn1{
+  position: absolute;
+  top: calc(50% - 20px);
+  background-color: rgba(169, 169, 169, 0.5);
+  height: 50px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  font-size: 20px;
+  user-select: none;
+  font-weight: 600;
+  cursor: pointer;
+}
 
+.btn1.inactive{
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.btn1:first-of-type {
+  /* transform: rotate(-45deg); */
+  left: 10px;
+}
+
+.btn1:last-of-type {
+  /* transform: rotate(135deg); */
+  right: 10px;
+}
+
+.btn2{
+  position: absolute;
+  top: calc(50% - 20px);
+  background-color: rgba(169, 169, 169, 0.5);
+  height: 50px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  font-size: 20px;
+  user-select: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn2.inactive{
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.btn2:first-of-type {
+  /* transform: rotate(-45deg); */
+  left: 10px;
+}
+
+.btn2:last-of-type {
+  /* transform: rotate(135deg); */
+  right: 10px;
+}
 /* #slider-container .btn:hover { */
 /* transform: scale(1.2); */
 /* } */
