@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
   const slider1 = document.querySelector(".slider1");
 
-  function createMovieCard(movie) {
+  function createMovieCard(movie,index) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.classList.add("slide1");
@@ -21,7 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
       <p>${movie.release_date}</p>
       </div>
     `;
+    card.addEventListener("click", function () {
+      redirectToCardPage(index);
+    });
     return card;
+  }
+
+  function redirectToCardPage(index) {
+    window.location.href = `card.html?id=${index}&cardName=popular`;
   }
 
   function fetchMovies() {
@@ -29,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         const movies = data.results;
-        movies.forEach((movie) => {
-          const card = createMovieCard(movie);
+        movies.forEach((movie,index) => {
+          const card = createMovieCard(movie,index);
           slider1.appendChild(card);
         });
       })
@@ -44,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=2`;
   const slider1 = document.querySelector(".slider2");
 
-  function createMovieCard(movie) {
+  function createMovieCard(movie,index) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
@@ -52,16 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
       <h3>${movie.title}</h3>
       <p>${movie.release_date}</p>
     `;
+    card.addEventListener("click", function () {
+      redirectToCardPage(index);
+    });
     return card;
   }
 
+  function redirectToCardPage(index) {
+    window.location.href = `card.html?id=${index}&cardName=trending`;
+  }
+  
   function fetchMovies() {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         const movies = data.results;
-        movies.forEach((movie) => {
-          const card = createMovieCard(movie);
+        movies.forEach((movie,index) => {
+          const card = createMovieCard(movie,index);
           slider1.appendChild(card);
         });
       })
@@ -75,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
   const slider1 = document.querySelector(".slider3");
 
-  function createMovieCard(movie) {
+  function createMovieCard(movie,index) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
@@ -83,7 +97,14 @@ document.addEventListener("DOMContentLoaded", function () {
       <h3>${movie.title}</h3>
       <p>${movie.release_date}</p>
     `;
+    card.addEventListener("click", function () {
+      redirectToCardPage(index);
+    });
     return card;
+  }
+
+  function redirectToCardPage(index) {
+    window.location.href = `card.html?id=${index}&cardName=top`;
   }
 
   function fetchMovies() {
@@ -91,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         const movies = data.results;
-        movies.forEach((movie) => {
-          const card = createMovieCard(movie);
+        movies.forEach((movie,index) => {
+          const card = createMovieCard(movie,index);
           slider1.appendChild(card);
         });
       })
