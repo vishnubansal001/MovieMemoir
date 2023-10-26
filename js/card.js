@@ -1,3 +1,11 @@
+document.addEventListener("DOMContentLoaded", function () {
+  let loggedInUser = localStorage.getItem("loggedInUser");
+  console.log(loggedInUser);
+  if (!loggedInUser) {
+    window.location.href = "./signin.html";
+  }
+});
+
 const apiKey = "020b12e5bb22832016d443f1a8f63af0";
 document.addEventListener("DOMContentLoaded", function () {
   let params = new URLSearchParams(window.location.search);

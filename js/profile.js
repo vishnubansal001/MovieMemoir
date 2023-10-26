@@ -1,14 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
+  let loggedInUser = localStorage.getItem("loggedInUser");
+  console.log(loggedInUser);
+  if (!loggedInUser) {
+    window.location.href = "./signin.html";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
   // Get user data from localStorage
-  const loggedInUserName = localStorage.getItem("loggedInUserName");
-  const loggedInUserEmail = localStorage.getItem("loggedInUserEmail");
+  const loggedInUserName = localStorage.getItem("loggedInUser");
   const movies = JSON.parse(localStorage.getItem("movies")) || [];
 
   // Populate user data
   const userDataElement = document.getElementById("user-data");
   userDataElement.innerHTML = `
         <h1>Welcome, ${loggedInUserName}</h1>
-        <p>Email: ${loggedInUserEmail}</p>
     `;
 
   // Populate cards
