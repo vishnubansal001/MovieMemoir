@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
   const slider1 = document.querySelector(".slider1");
 
-  function createMovieCard(movie,index) {
+  function createMovieCard(movie, index) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.classList.add("slide1");
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         const movies = data.results;
-        movies.forEach((movie,index) => {
-          const card = createMovieCard(movie,index);
+        movies.forEach((movie, index) => {
+          const card = createMovieCard(movie, index);
           slider1.appendChild(card);
         });
       })
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=2`;
   const slider1 = document.querySelector(".slider2");
 
-  function createMovieCard(movie,index) {
+  function createMovieCard(movie, index) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
@@ -68,14 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
   function redirectToCardPage(index) {
     window.location.href = `card.html?id=${index}&cardName=trending`;
   }
-  
+
   function fetchMovies() {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         const movies = data.results;
-        movies.forEach((movie,index) => {
-          const card = createMovieCard(movie,index);
+        movies.forEach((movie, index) => {
+          const card = createMovieCard(movie, index);
           slider1.appendChild(card);
         });
       })
@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const apiUrl = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`;
   const slider1 = document.querySelector(".slider3");
 
-  function createMovieCard(movie,index) {
+  function createMovieCard(movie, index) {
     const card = document.createElement("div");
     card.classList.add("card");
     card.innerHTML = `
@@ -112,8 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((response) => response.json())
       .then((data) => {
         const movies = data.results;
-        movies.forEach((movie,index) => {
-          const card = createMovieCard(movie,index);
+        movies.forEach((movie, index) => {
+          const card = createMovieCard(movie, index);
           slider1.appendChild(card);
         });
       })
@@ -335,4 +335,59 @@ function slideLeft3() {
   if (currentPosition2 > 0) {
     buttons2[0].classList.remove("inactive");
   }
+}
+
+function debounce(func, delay) {
+  let timeoutId;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, delay);
+  };
+}
+
+const searchInput = document.getElementById("search");
+const resultsElement = document.getElementById("results");
+
+searchInput.addEventListener(
+  "input",
+  debounce(function () {
+    const query = this.value;
+    if (query.length >= 3) {
+      fetchMovies(query);
+    } else {
+      resultsElement.innerHTML = "";
+    }
+  }, 500)
+);
+
+function fetchMovies(query) {
+  const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+
+  function redirectToCardPage(index) {
+    window.location.href = `card.html?id=${index}&cardName=search&query=${query}`;
+  }
+
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      const movies = data.results;
+      resultsElement.innerHTML = "";
+      movies.forEach((movie,index) => {
+        const cardElement = document.createElement("div");
+        cardElement.classList.add("card");
+        cardElement.innerHTML = `
+                  <h2>${movie.title}</h2>
+                  <p>${movie.overview}</p>
+              `;
+        cardElement.addEventListener("click", function () {
+          redirectToCardPage(index);
+        });
+        resultsElement.appendChild(cardElement);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
 }

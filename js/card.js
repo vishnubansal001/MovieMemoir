@@ -154,6 +154,46 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       console.log("Invalid index");
     }
+  } else if(name == "search"){
+    let query = params.get("query");
+    const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
+    let cardData;
+
+    function fetchMovies() {
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((data) => {
+          const movies = data.results;
+          cardData = movies;
+          let card = cardData[cardId];
+          let cardContentElement = document.getElementById("card-content");
+          if (card) {
+            cardContentElement.innerHTML = `
+                    <div>
+                      <img src="https://image.tmdb.org/t/p/w500/${
+                        card.poster_path
+                      }" alt="${card.title.toLowerCase()}" />
+                    </div>
+                    <form>
+                      <h1>Fill the Review for ${card.title}</h1>
+                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
+                      <button>Submit</button>
+                    </form>
+                `;
+            cardContentElement
+              .querySelector("button")
+              .addEventListener("click", function (event) {
+                event.preventDefault();
+                submitReview(card, cardId, name);
+              });
+          } else {
+            cardContentElement.innerHTML = "<p>Card not found</p>";
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+
+    fetchMovies();
   }
 });
 function submitReview(card, cardId, name) {
