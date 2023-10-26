@@ -18,12 +18,25 @@ document.addEventListener("DOMContentLoaded", function () {
           let card = cardData[cardId];
           let cardContentElement = document.getElementById("card-content");
           if (card) {
-            // Display card content
             cardContentElement.innerHTML = `
-                    <h1>${card.title}</h1>
+                    <div>
+                      <img src="https://image.tmdb.org/t/p/w500/${
+                        card.poster_path
+                      }" alt="${card.title.toLowerCase()}" />
+                    </div>
+                    <form>
+                      <h1>Fill the Review for ${card.title}</h1>
+                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
+                      <button>Submit</button>
+                    </form>
                 `;
+            cardContentElement
+              .querySelector("button")
+              .addEventListener("click", function (event) {
+                event.preventDefault();
+                submitReview(card, cardId, name);
+              });
           } else {
-            // Handle case where card data is not found
             cardContentElement.innerHTML = "<p>Card not found</p>";
           }
         })
@@ -45,12 +58,10 @@ document.addEventListener("DOMContentLoaded", function () {
           let card = cardData[cardId];
           let cardContentElement = document.getElementById("card-content");
           if (card) {
-            // Display card content
             cardContentElement.innerHTML = `
                     <h1>${card.title}</h1>
                 `;
           } else {
-            // Handle case where card data is not found
             cardContentElement.innerHTML = "<p>Card not found</p>";
           }
         })
@@ -72,12 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
           let card = cardData[cardId];
           let cardContentElement = document.getElementById("card-content");
           if (card) {
-            // Display card content
             cardContentElement.innerHTML = `
                     <h1>${card.title}</h1>
                 `;
           } else {
-            // Handle case where card data is not found
             cardContentElement.innerHTML = "<p>Card not found</p>";
           }
         })
@@ -87,3 +96,25 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchMovies();
   }
 });
+function submitReview(card, cardId, name) {
+  // console.log(card, cardId, name);
+
+  const review = document.getElementById(`r${cardId}${name}`);
+
+  let movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+  const reviewObj = {
+    title: card.title,
+    id: card.id,
+    review: review.value,
+  };
+
+  movies.push(reviewObj);
+
+  localStorage.setItem("movies", JSON.stringify(movies));
+
+  // console.log(localStorage.getItem("movies"));
+
+  review.value = ""
+  alert("Review submitted successfully!");
+}
