@@ -28,14 +28,16 @@ document.addEventListener("DOMContentLoaded", function () {
           if (card) {
             cardContentElement.innerHTML = `
                     <div>
-                      <img src="https://image.tmdb.org/t/p/w500/${
-                        card.poster_path
-                      }" alt="${card.title.toLowerCase()}" />
+                      <img src="${
+                        !card.poster_path
+                          ? `../assets/m3.jpg`
+                          : `https://image.tmdb.org/t/p/w500/${card.poster_path}`
+                      }" alt="${card.title.toLowerCase()}" class="banner" />
                     </div>
-                    <form>
+                    <form class="formm">
                       <h1>Fill the Review for ${card.title}</h1>
-                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
-                      <button>Submit</button>
+                      <textarea name="review" cols="30" rows="5" id="r${cardId}${name}" required placeholder="Your Review"></textarea>
+                      <div><button>Submit</button></div>
                     </form>
                 `;
             cardContentElement
@@ -68,14 +70,16 @@ document.addEventListener("DOMContentLoaded", function () {
           if (card) {
             cardContentElement.innerHTML = `
                     <div>
-                      <img src="https://image.tmdb.org/t/p/w500/${
-                        card.poster_path
-                      }" alt="${card.title.toLowerCase()}" />
+                      <img src="${
+                        !card.poster_path
+                          ? `../assets/m3.jpg`
+                          : `https://image.tmdb.org/t/p/w500/${card.poster_path}`
+                      }" alt="${card.title.toLowerCase()}" class="banner" />
                     </div>
-                    <form>
+                    <form class="formm">
                       <h1>Fill the Review for ${card.title}</h1>
-                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
-                      <button>Submit</button>
+                      <textarea name="review" cols="30" rows="5" id="r${cardId}${name}" required placeholder="Your Review"></textarea>
+                      <div><button>Submit</button></div>
                     </form>
                 `;
             cardContentElement
@@ -108,14 +112,16 @@ document.addEventListener("DOMContentLoaded", function () {
           if (card) {
             cardContentElement.innerHTML = `
                     <div>
-                      <img src="https://image.tmdb.org/t/p/w500/${
-                        card.poster_path
-                      }" alt="${card.title.toLowerCase()}" />
+                      <img src="${
+                        !card.poster_path
+                          ? `../assets/m3.jpg`
+                          : `https://image.tmdb.org/t/p/w500/${card.poster_path}`
+                      }" alt="${card.title.toLowerCase()}" class="banner" />
                     </div>
-                    <form>
+                    <form class="formm">
                       <h1>Fill the Review for ${card.title}</h1>
-                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
-                      <button>Submit</button>
+                      <textarea name="review" cols="30" rows="5" id="r${cardId}${name}" required placeholder="Your Review"></textarea>
+                      <div><button>Submit</button></div>
                     </form>
                 `;
             cardContentElement
@@ -140,14 +146,18 @@ document.addEventListener("DOMContentLoaded", function () {
       if (movieAtIndex) {
         cardContentElement.innerHTML = `
                 <div>
-                  <img src="https://image.tmdb.org/t/p/w500/${
-                    movieAtIndex.poster
-                  }" alt="${movieAtIndex.title.toLowerCase()}" />
+                  <img src="${
+                    !movieAtIndex.poster
+                      ? `../assets/m3.jpg`
+                      : `https://image.tmdb.org/t/p/w500/${movieAtIndex.poster}`
+                  }" alt="${movieAtIndex.title.toLowerCase()}" class="banner" />
                 </div>
-                <form>
+                <form class="formm">
                   <h1>Fill the Review for ${movieAtIndex.title}</h1>
-                  <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required>${movieAtIndex.review}</textarea>
-                  <button>Submit</button>
+                  <textarea name="review" cols="30" rows="5" id="r${cardId}${name}" required placeholder="Your Review">${
+          movieAtIndex.review
+        }</textarea>
+                  <div><button>Submit</button></div>
                 </form>
             `;
         cardContentElement
@@ -162,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       console.log("Invalid index");
     }
-  } else if(name == "search"){
+  } else if (name == "search") {
     let query = params.get("query");
     const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
     let cardData;
@@ -178,13 +188,15 @@ document.addEventListener("DOMContentLoaded", function () {
           if (card) {
             cardContentElement.innerHTML = `
                     <div>
-                      <img src="https://image.tmdb.org/t/p/w500/${
-                        card.poster_path
-                      }" alt="${card.title.toLowerCase()}" />
+                      <img src="${
+                        !card.poster_path
+                          ? `../assets/m3.jpg`
+                          : `https://image.tmdb.org/t/p/w500/${card.poster_path}`
+                      }" alt="${card.title.toLowerCase()}" class="banner" />
                     </div>
-                    <form>
+                    <form class="formm">
                       <h1>Fill the Review for ${card.title}</h1>
-                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
+                      <textarea name="review" cols="30" rows="5" id="r${cardId}${name}" required placeholder="Your Review"></textarea>
                       <button>Submit</button>
                     </form>
                 `;
@@ -230,8 +242,7 @@ function submitReview1(card, cardId, name) {
   let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
   movies.splice(cardId, 1);
-  localStorage.setItem('movies', JSON.stringify(movies));
-
+  localStorage.setItem("movies", JSON.stringify(movies));
 
   const reviewObj = {
     title: card.title,
@@ -244,7 +255,7 @@ function submitReview1(card, cardId, name) {
 
   localStorage.setItem("movies", JSON.stringify(movies));
 
-  console.log(localStorage.getItem("movies"))
+  console.log(localStorage.getItem("movies"));
 
   review.value = "";
   alert("Review submitted successfully!");
