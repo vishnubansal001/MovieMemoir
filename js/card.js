@@ -59,8 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
           let cardContentElement = document.getElementById("card-content");
           if (card) {
             cardContentElement.innerHTML = `
-                    <h1>${card.title}</h1>
+                    <div>
+                      <img src="https://image.tmdb.org/t/p/w500/${
+                        card.poster_path
+                      }" alt="${card.title.toLowerCase()}" />
+                    </div>
+                    <form>
+                      <h1>Fill the Review for ${card.title}</h1>
+                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
+                      <button>Submit</button>
+                    </form>
                 `;
+            cardContentElement
+              .querySelector("button")
+              .addEventListener("click", function (event) {
+                event.preventDefault();
+                submitReview(card, cardId, name);
+              });
           } else {
             cardContentElement.innerHTML = "<p>Card not found</p>";
           }
@@ -84,8 +99,23 @@ document.addEventListener("DOMContentLoaded", function () {
           let cardContentElement = document.getElementById("card-content");
           if (card) {
             cardContentElement.innerHTML = `
-                    <h1>${card.title}</h1>
+                    <div>
+                      <img src="https://image.tmdb.org/t/p/w500/${
+                        card.poster_path
+                      }" alt="${card.title.toLowerCase()}" />
+                    </div>
+                    <form>
+                      <h1>Fill the Review for ${card.title}</h1>
+                      <textarea name="review" cols="30" rows="10" id="r${cardId}${name}" required></textarea>
+                      <button>Submit</button>
+                    </form>
                 `;
+            cardContentElement
+              .querySelector("button")
+              .addEventListener("click", function (event) {
+                event.preventDefault();
+                submitReview(card, cardId, name);
+              });
           } else {
             cardContentElement.innerHTML = "<p>Card not found</p>";
           }
@@ -97,8 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 function submitReview(card, cardId, name) {
-  // console.log(card, cardId, name);
-
   const review = document.getElementById(`r${cardId}${name}`);
 
   let movies = JSON.parse(localStorage.getItem("movies")) || [];
@@ -113,8 +141,6 @@ function submitReview(card, cardId, name) {
 
   localStorage.setItem("movies", JSON.stringify(movies));
 
-  // console.log(localStorage.getItem("movies"));
-
-  review.value = ""
+  review.value = "";
   alert("Review submitted successfully!");
 }
