@@ -13,7 +13,7 @@ function signIn() {
       pass.value = "";
       document.getElementById("login-error").style.display = "none";
       localStorage.setItem('loggedInUser', email);
-      window.location.href = "./home.html";
+      window.location.href = "../index.html";
       // Hide error message
     } else {
       displayErrorMessage("login-error", "Incorrect password.");
@@ -61,7 +61,7 @@ function signUp() {
     ema.value = "";
     pass.value = "";
     document.getElementById("signup-error").style.display = "none"; // Hide error message
-    window.location.href = "./home.html";
+    window.location.href = "../index.html";
   }
 }
 
