@@ -154,131 +154,56 @@ changeSlide();
 
 var container = document.getElementById("container");
 var slider = document.querySelector(".slider1");
-// var slider = document.querySelector(".slider1");
 var slidee = document.querySelectorAll("slide1");
-console.log(slidee);
-// var slidee = document.getElementsByClassName("slide").length;
 var buttons = document.getElementsByClassName("btn");
-
-var currentPosition = 0;
-var currentMargin = 0;
-var slidesPerPage = 0;
-var slidesCount = slidee - slidesPerPage;
-var containerWidth = container.offsetWidth;
-var prevKeyActive = false;
-var nextKeyActive = true;
-
-window.addEventListener("resize", checkWidth);
-
-function checkWidth() {
-  containerWidth = container.offsetWidth;
-  setParams(containerWidth);
-}
-
-// function setParams(w) {
-//   if (w < 551) {
-//     slidesPerPage = 1;
-//   } else {
-//     if (w < 901) {
-//       slidesPerPage = 2;
-//     } else {
-//       if (w < 1101) {
-//         slidesPerPage = 3;
-//       } else {
-//         slidesPerPage = 4;
-//       }
-//     }
-//   }
-//   slidesCount = slidee - slidesPerPage;
-//   if (currentPosition > slidesCount) {
-//     currentPosition -= slidesPerPage;
-//   }
-//   currentMargin = -currentPosition * (100 / slidesPerPage);
-//   slider.style.marginLeft = currentMargin + "%";
-//   if (currentPosition > 0) {
-//     buttons[0].classList.remove("inactive");
-//   }
-//   if (currentPosition < slidesCount) {
-//     buttons[1].classList.remove("inactive");
-//   }
-//   if (currentPosition >= slidesCount) {
-//     buttons[1].classList.add("inactive");
-//   }
-// }
-
-// setParams();
+var cnt1 = 0;
 
 function slideRight1() {
-  if (currentPosition != 0) {
-    slider.style.marginLeft = currentMargin + 300 + "px"; // Change here
-    currentMargin += 300; // Change here
-    currentPosition--;
-  }
-  if (currentPosition === 0) {
-    buttons[0].classList.add("inactive");
-  }
-  if (currentPosition < slidesCount) {
-    buttons[1].classList.remove("inactive");
+  if (cnt1 >= -7000) {
+    cnt1 = 0;
+    slider.style.transform = `translateX(${cnt1}px)`;
+    console.log(slider.getBoundingClientRect());
+  } else {
+    cnt1 += 400;
+    slider.style.transform = `translateX(${cnt1}px)`
   }
 }
 
 function slideLeft1() {
-  const parentElement = document.querySelector(".slider1"); // Replace 'parent' with the actual ID of your parent element
-  const numberOfChildren = parentElement.children.length;
-  if (currentPosition <= numberOfChildren) {
-    slider.style.marginLeft = currentMargin - 300 + "px"; // Change here
-    currentMargin -= 300; // Change here
-    currentPosition++;
-  }
-  if (currentPosition == numberOfChildren) {
-    buttons[1].classList.add("inactive");
-  }
-  if (currentPosition > 0) {
-    buttons[0].classList.remove("inactive");
+  if (cnt1 <= -7000) {
+    cnt1 = 0;
+    slider.style.transform = `translateX(${cnt1}px)`;
+    console.log(slider.getBoundingClientRect());
+  } else {
+    cnt1 += -400;
+    slider.style.transform = `translateX(${cnt1}px)`
   }
 }
 
-var currentPosition1 = 0;
-var currentMargin1 = 0;
-var slidesPerPage1 = 0;
-var slidesCount1 = slidee - slidesPerPage;
-var containerWidth1 = container.offsetWidth;
-var prevKeyActive1 = false;
-var nextKeyActive1 = true;
-
-var slider1 = document.querySelector(".slider2");
-// var slider = document.querySelector(".slider1");
-// var slidee = document.querySelectorAll("slide1");
-// var slidee = document.getElementsByClassName("slide").length;
-var buttons1 = document.getElementsByClassName("btn1");
+var slider12 = document.querySelector(".slider2");
+var slidee = document.querySelectorAll("slide1");
+var buttons = document.getElementsByClassName("btn1");
+var cnt2 = 0;
 
 function slideRight2() {
-  if (currentPosition1 != 0) {
-    slider1.style.marginLeft = currentMargin1 + 300 + "px"; // Change here
-    currentMargin1 += 300; // Change here
-    currentPosition1--;
-  }
-  if (currentPosition1 === 0) {
-    buttons1[0].classList.add("inactive");
-  }
-  if (currentPosition1 < slidesCount1) {
-    buttons1[1].classList.remove("inactive");
+  if (cnt2 >= -7000) {
+    cnt2 = 0;
+    slider12.style.transform = `translateX(${cnt2}px)`;
+    console.log(slider.getBoundingClientRect());
+  } else {
+    cnt2 += 400;
+    slider12.style.transform = `translateX(${cnt2}px)`
   }
 }
 
 function slideLeft2() {
-  const parentElement = document.querySelector(".slider2"); // Replace 'parent' with the actual ID of your parent element
-  const numberOfChildren = parentElement.children.length;
-  if (currentPosition1 <= numberOfChildren) {
-    slider1.style.marginLeft = currentMargin1 - 300 + "px"; // Change here
-    currentMargin1 -= 300; // Change here
-    currentPosition1++;
-  }
-  if (currentPosition1 == numberOfChildren) {
-    buttons1[1].classList.add("inactive");
-  }
-  if (currentPosition1 > 0) {
-    buttons1[0].classList.remove("inactive");
+  if (cnt2 <= -7000) {
+    cnt2 = 0;
+    slider12.style.transform = `translateX(${cnt2}px)`;
+    console.log(slider.getBoundingClientRect());
+  } else {
+    cnt2 += -400;
+    slider12.style.transform = `translateX(${cnt2}px)`
   }
 }
 
@@ -294,47 +219,30 @@ popup.addEventListener("click", (event) => {
   event.stopPropagation();
 });
 
-var currentPosition2 = 0;
-var currentMargin2 = 0;
-var slidesPerPage2 = 0;
-var slidesCount2 = slidee - slidesPerPage;
-var containerWidth1 = container.offsetWidth;
-var prevKeyActive1 = false;
-var nextKeyActive1 = true;
-
-var slider2 = document.querySelector(".slider3");
-// var slider = document.querySelector(".slider2");
-// var slidee = document.querySelectorAll("slide1");
-// var slidee = document.getElementsByClassName("slide").length;
-var buttons2 = document.getElementsByClassName("btn2");
+var slider111 = document.querySelector(".slider3");
+var slidee = document.querySelectorAll("slide1");
+var buttons = document.getElementsByClassName("btn2");
+var cnt2 = 0;
 
 function slideRight3() {
-  if (currentPosition2 != 0) {
-    slider2.style.marginLeft = currentMargin2 + 300 + "px"; // Change here
-    currentMargin2 += 300; // Change here
-    currentPosition2--;
-  }
-  if (currentPosition2 === 0) {
-    buttons2[0].classList.add("inactive");
-  }
-  if (currentPosition2 < slidesCount2) {
-    buttons2[1].classList.remove("inactive");
+  if (cnt2 >= -7000) {
+    cnt2 = 0;
+    slider111.style.transform = `translateX(${cnt2}px)`;
+    console.log(slider.getBoundingClientRect());
+  } else {
+    cnt2 += 400;
+    slider111.style.transform = `translateX(${cnt2}px)`
   }
 }
 
 function slideLeft3() {
-  const parentElement = document.querySelector(".slider2"); // Replace 'parent' with the actual ID of your parent element
-  const numberOfChildren = parentElement.children.length;
-  if (currentPosition2 <= numberOfChildren) {
-    slider2.style.marginLeft = currentMargin2 - 300 + "px"; // Change here
-    currentMargin2 -= 300; // Change here
-    currentPosition2++;
-  }
-  if (currentPosition2 == numberOfChildren) {
-    buttons2[1].classList.add("inactive");
-  }
-  if (currentPosition2 > 0) {
-    buttons2[0].classList.remove("inactive");
+  if (cnt2 <= -7000) {
+    cnt2 = 0;
+    slider111.style.transform = `translateX(${cnt2}px)`;
+    console.log(slider.getBoundingClientRect());
+  } else {
+    cnt2 += -400;
+    slider111.style.transform = `translateX(${cnt2}px)`
   }
 }
 
@@ -377,7 +285,7 @@ function fetchMovies(query) {
     .then((data) => {
       const movies = data.results;
       resultsElement.innerHTML = "";
-      movies.forEach((movie,index) => {
+      movies.forEach((movie, index) => {
         const cardElement = document.createElement("div");
         cardElement.classList.add("basic-card");
         cardElement.classList.add("basic-card-light");

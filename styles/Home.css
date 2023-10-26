@@ -159,6 +159,7 @@ h6 {
 
 #slider-container .btn {
   position: absolute;
+  z-index: 1000;
   top: calc(50% - 20px);
   background-color: rgba(169, 169, 169, 0.5);
   height: 50px;
@@ -175,6 +176,7 @@ h6 {
 .btn1 {
   position: absolute;
   top: calc(50% - 20px);
+  z-index: 1000;
   background-color: rgba(169, 169, 169, 0.5);
   height: 50px;
   color: white;
@@ -204,6 +206,7 @@ h6 {
 
 .btn2 {
   position: absolute;
+  z-index: 1000;
   top: calc(50% - 20px);
   background-color: rgba(169, 169, 169, 0.5);
   height: 50px;
@@ -252,9 +255,14 @@ h6 {
 #slider-container #slider1 {
   display: flex;
   gap: 1rem;
+  overflow: hidden;
+  align-items: start;
+  justify-content: start;
+  will-change: contents;
   width: 1000%;
   height: 100%;
   transition: all 0.5s;
+  transform: translateX(0px);
 }
 
 #slider-container #slider1 .slide {
