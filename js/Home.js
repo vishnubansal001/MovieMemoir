@@ -379,10 +379,16 @@ function fetchMovies(query) {
       resultsElement.innerHTML = "";
       movies.forEach((movie,index) => {
         const cardElement = document.createElement("div");
-        cardElement.classList.add("card");
+        cardElement.classList.add("basic-card");
+        cardElement.classList.add("basic-card-light");
         cardElement.innerHTML = `
-                  <h2>${movie.title}</h2>
-                  <p>${movie.overview}</p>
+                  <div class="card-content">
+                    <h2 class="card-title">${movie.title}</h2>
+                    <p class="card-text">${movie.overview}</p>
+                  </div>
+                  <div class="card-link">
+                    <a href="#" title="Review"><span>Review</span></a>
+                </div>
               `;
         cardElement.addEventListener("click", function () {
           redirectToCardPage(index);
