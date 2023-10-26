@@ -5,11 +5,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
+    <link rel="stylesheet" href="../styles/profile.css">
 </head>
 
 <body>
+
+    <header class="header-container">
+        <nav class="header-wrapper">
+            <div class="title">
+                <a href="./home.html"><p>MovieMemoir</p></a>
+            </div>
+            <div class="nav-item2">
+                <div class="avatar-container">
+                    <a href="../views/Profile.html"><img src="../assets/avatar.jpg" class="avatar" alt=""></a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <div id="user-data"></div>
-    <div id="cards"></div>
+    <div id="cards-cont">
+        <h2>Your Reviews</h2>
+        <div id="cards">
+
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p>&copy; CopyRight VB</p>
+        <p><span class="footer2">Terms</span> and <span class="footer2">Privacy Policy</span></p>
+    </footer>
+
     <script src="../js/profile.js"></script>
 </body>
 
