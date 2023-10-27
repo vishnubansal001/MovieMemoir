@@ -21,6 +21,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const cardsElement = document.getElementById("cards");
   cardsElement.classList.add("card-grid");
 
+  if (movies.length == 0) {
+    const cardElement = document.createElement("div");
+    cardElement.innerHTML = `
+      <h1 style="color:white;">No Movie is Reviewed Yet</h1>
+    `;
+    cardsElement.appendChild(cardElement);
+  }
+
   movies.forEach((movie, index) => {
     const cardElement = document.createElement("div");
     cardElement.classList.add("basic-card");
