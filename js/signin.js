@@ -12,7 +12,7 @@ function signIn() {
       ema.value = "";
       pass.value = "";
       document.getElementById("login-error").style.display = "none";
-      localStorage.setItem('loggedInUser', email);
+      localStorage.setItem("loggedInUser", email);
       window.location.href = "../index.html";
       // Hide error message
     } else {
@@ -52,8 +52,8 @@ function signUp() {
     };
     localStorage.setItem(email, JSON.stringify(user));
     showSuccessMessage("Sign up successful!");
-    localStorage.setItem('loggedInUser', email);
-    localStorage.setItem('loggedInUserName', username);
+    localStorage.setItem("loggedInUser", email);
+    localStorage.setItem("loggedInUserName", username);
     let use = document.getElementById("signup-username");
     let ema = document.getElementById("signup-email");
     let pass = document.getElementById("signup-password");
