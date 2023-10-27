@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function redirectToCardPage(index) {
-    window.location.href = `card.html?id=${index}&cardName=popular`;
+    window.location.href = `./views/card.html?id=${index}&cardName=popular`;
   }
 
   function fetchMovies() {
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function redirectToCardPage(index) {
-    window.location.href = `card.html?id=${index}&cardName=trending`;
+    window.location.href = `./views/card.html?id=${index}&cardName=trending`;
   }
 
   function fetchMovies() {
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function redirectToCardPage(index) {
-    window.location.href = `card.html?id=${index}&cardName=top`;
+    window.location.href = `./views/card.html?id=${index}&cardName=top`;
   }
 
   function fetchMovies() {
@@ -277,7 +277,7 @@ function fetchMovies(query) {
   const apiUrl = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${query}`;
 
   function redirectToCardPage(index) {
-    window.location.href = `card.html?id=${index}&cardName=search&query=${query}`;
+    window.location.href = `./views/card.html?id=${index}&cardName=search&query=${query}`;
   }
 
   fetch(apiUrl)
